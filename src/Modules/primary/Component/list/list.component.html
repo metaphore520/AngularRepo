@@ -1,0 +1,189 @@
+<!--<h1>Author List</h1>
+<ul>
+  <li *ngFor="let author of _authorList; index as i; first as isFirst">
+    <span> Id: {{author.Id}}, Name:  {{author.Name}}</span>
+    <a [routerLink]="['/common-data/create']">Delete</a>
+    <span>-------</span>
+    <button pButton type="button" label="Edit Client" (click)="Edit(author)">Edit Author</button>
+  </li>
+</ul>-->
+<table class="table table-primary caption-top">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let author of _authorList; index as i; first as isFirst">
+      <th scope="row">{{i}}</th>
+      <td>{{author.Id}}</td>
+      <td>{{author.Name}}</td>
+      <td><button pButton type="button" class="btn btn-primary" label="Edit" (click)="Edit(author)">Edit</button></td>
+      <td><button pButton type="button" class="btn btn-primary" label="Delete" (click)="Delete(author)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <a  [routerLink]="['/common-data/edit/', author.Id,author.Name]"
+     [queryParams]="{ lastVisited: 'kdfg' }">Edit</a> -->
+<!--Important     [dataSource]="dataSource8" -->
+<!--<table mat-table class="mat-elevation-z8">
+  <ng-container [matColumnDef]="column" *ngFor="let column of dataSource8">
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
+</table>-->
+<!--<section class="example-container mat-elevation-z8" tabindex="0">
+  <table mat-table  [data-content]="data">
+    Position Column
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+    </ng-container>
+    Name Column
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>-->
+<!--<mat-card>
+  For the complete tutorial please go through
+  <a href="https://www.angularjswiki.com/material/mat-table/">https://www.angularjswiki.com/material/mat-table/</a>
+</mat-card>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>Fill form field</mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Outline form field</mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+</p>
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>-->
+<!--
+<span *ngIf="isFirst">........... This is First Item</span>
+  -->
+<!--Important-->
+<!--<section class="example-container mat-elevation-z8" tabindex="0">
+  <table mat-table [dataSource]="data">
+    Position Column
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+    </ng-container>
+    Name Column
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>-->

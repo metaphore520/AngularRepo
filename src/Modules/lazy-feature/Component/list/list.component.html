@@ -1,0 +1,51 @@
+<h1>list works!</h1>
+
+
+<h1 appTest>{{"5" |test:"taka":"ghgh"}}</h1>
+<!--<h1>mmmmddddddddddd</h1>
+<h1>mmmmddddddddddd</h1>
+<h1>mmmmddddddddddd</h1>-->
+<button appTest>Click</button>
+<div *appLoopd="let nr of number;indice as j">
+  {{nr}} --  {{j}}  --  Ranom html--
+</div>
+
+
+<app-dropdown-c
+                [data]="datasource"
+                (menuClick)="DDMenuClicked($event)">
+  <h5 class="first">Drop Down Start</h5>
+  <h5 class="last">Drop Down End</h5>
+</app-dropdown-c>
+
+
+
+
+
+<table class="table table-primary caption-top">
+  <!--<caption>List of users</caption>-->
+  <thead>
+    <tr>
+      <!--<th scope="col">#</th>-->
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">FullPrice</th>
+      <th scope="col">Course Teacher</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of _courseList; index as i; first as isFirst">
+      <!--<th scope="row">{{i}}</th>-->
+      <td>{{course.Id}}</td>
+      <td>{{course.Name}}</td>
+      <td>{{course.Description}}</td>
+      <td>{{course.FullPrice}}</td>
+      <td>{{course.Author.Name}}</td>
+      <td><button pButton type="button" class="btn btn-primary" label="Edit" (click)="Edit(course)">Edit</button></td>
+      <td><button pButton type="button" class="btn btn-primary" label="Delete" (click)="Delete(course)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,25 @@
+<h1>edit works!</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <label> Edit Author</label>
+    </div>
+    <div class="col-lg-6">
+      <!--<input type="text" placeholder="Name" [(ngModel)]="_Author.Id" pInputText [disabled]="true" />-->
+      <input class="form-control form-control-lg"  [(ngModel)]="_Author.Id"  type="text" placeholder="Id"
+             aria-label=".form-control-lg example"  [disabled]="true" >
+
+    </div>
+    <div class="col-lg-6">
+      <!--<input type="text" placeholder="Name" [(ngModel)]="_Author.Name" pInputText />-->
+
+      <input class="form-control form-control-lg" [(ngModel)]="_Author.Name" type="text" placeholder="Name"
+             aria-label=".form-control-lg example">
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary"  (click)="EditAuthor($event)">Edit Author</button>
+      <!--<button pButton type="button" label="Edit Client" (click)="EditAuthor($event)">Edit Author</button>-->
+      <!-- (click)="handleClick($event)" -->
+    </div>
+  </div>
+</div>

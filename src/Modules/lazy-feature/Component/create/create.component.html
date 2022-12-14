@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <label> Add New Course</label>
+    </div>
+    <div class="col-lg-3">
+      <input class="form-control form-control-lg" type="text" placeholder="Id"
+             [(ngModel)]="_Course.Id" aria-label=".form-control-lg example" disabled>
+
+      <input class="form-control form-control-lg" type="text" placeholder="Name"
+             [(ngModel)]="_Course.Name" aria-label=".form-control-lg example">
+
+      <input class="form-control form-control-lg" type="text" placeholder="Description"
+             [(ngModel)]="_Course.Description" aria-label=".form-control-lg example">
+
+      <input class="form-control form-control-lg" type="text" placeholder="FullPrice"
+             [(ngModel)]="_Course.FullPrice" aria-label=".form-control-lg example">
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{SelectedMenu}}
+        </button>
+        <ul class="dropdown-menu" style="">
+          <li><a class="dropdown-item" *ngFor="let author of _AuthorList" (click)="SelectedAuthor(author)">{{author.Name}}</a></li>
+        </ul>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="AddCourse($event)">Add Course</button>
+    </div>
+  </div>
+</div>
