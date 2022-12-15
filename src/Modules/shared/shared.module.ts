@@ -5,6 +5,8 @@ import { TestDirective } from '../../Directives/test/test.directive';
 import { LoopdDirective } from '../../Directives/loopStructurual/loopd.directive';
 import { DropdownCComponent } from './dropdown-c/dropdown-c.component';
 import { FormsModule } from '@angular/forms';
+import { DyCompDirective } from './directives/dy-comp.directive';
+
 
 
 
@@ -13,7 +15,9 @@ import { FormsModule } from '@angular/forms';
     TestPipe,
     TestDirective,
     LoopdDirective,
-    DropdownCComponent
+    DropdownCComponent,
+    DyCompDirective,
+
   ],
   imports: [
     CommonModule,

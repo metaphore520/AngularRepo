@@ -10,6 +10,8 @@ import { IndexComponent } from './Component/index/index.component';
 import { SharedModule } from '../shared/shared.module';
 import { DropdownFComponent } from './Component/dropdown-f/dropdown-f.component';
 import { DropdownHComponent } from './Component/dropdown-h/dropdown-h.component';
+import { Banner1Component } from './Component/banner1/banner1.component';
+import { Banner2Component } from './Component/banner2/banner2.component';
 
 
 @NgModule({
@@ -17,9 +19,11 @@ import { DropdownHComponent } from './Component/dropdown-h/dropdown-h.component'
     CreateComponent,
     EditComponent,
     ListComponent,
-    IndexComponent
+    IndexComponent,
     DropdownFComponent,
     DropdownHComponent,
+    Banner1Component,
+    Banner2Component
   ],
   imports: [
     CommonModule,
