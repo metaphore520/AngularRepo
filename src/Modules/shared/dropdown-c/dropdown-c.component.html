@@ -2,10 +2,9 @@
 <ng-content select=".first"></ng-content>
 <div class="dropdown-custom">
   <!--<button class="btn btn-secondary" type="button" (click)="DropdownClick()">
-     Dropdown button
-  </button>
-    -->
-  <input class="form-control form-control-lg"
+     Dropdown button </button>  -->
+  
+     <input class="form-control form-control-lg"
          [(ngModel)]="searchText"
          (focus)="OpenMenu()"
          (blur)="CloseMenu()"
@@ -15,19 +14,14 @@
          aria-label=".form-control-lg example">
   <h4>{{searchText}}</h4>
   <!--(focusout)="CloseMenu()"-->
-
   <div [hidden]="hideMenu" class="dropdown-custom-content">
-
     <div class="dropdown-custom-content-item"
          *ngFor="let item of data"
          (mousedown)="MenuMouseDown(item)"
          (click)="MenuClick(item)">
       {{item.value}}
     </div>
-
   </div>
-
-
 </div>
 <ng-content select=".last"></ng-content>
 

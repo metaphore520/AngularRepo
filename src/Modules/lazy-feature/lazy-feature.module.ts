@@ -8,6 +8,8 @@ import { ListComponent } from './Component/list/list.component';
 import { FormsModule } from '@angular/forms';
 import { IndexComponent } from './Component/index/index.component';
 import { SharedModule } from '../shared/shared.module';
+import { DropdownFComponent } from './Component/dropdown-f/dropdown-f.component';
+import { DropdownHComponent } from './Component/dropdown-h/dropdown-h.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     EditComponent,
     ListComponent,
     IndexComponent
+    DropdownFComponent,
+    DropdownHComponent,
   ],
   imports: [
     CommonModule,
