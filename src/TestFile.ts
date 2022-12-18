@@ -4,3 +4,6 @@ export interface Ex {
     test2: string;
     test3: string;
 }
+export interface Ex {
+    test: string;
+}
