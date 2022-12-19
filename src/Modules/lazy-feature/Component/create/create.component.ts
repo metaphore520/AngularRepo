@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DummyDataService } from '../../../../Service/dummy-data-service/dummy-data.service';
 import { AppUtil } from '../../../../appUtils/appConstant/AppUtility';
 import { IAuthor } from '../../../../Domains/DbModel/IAuthor';
 import { ICourse } from '../../../../Domains/DbModel/ICourse';
@@ -28,29 +29,44 @@ export class CreateComponent implements OnInit {
     (
       private _commonS: CommonService,
       private _http: HttpClient,
-      private _router: Router
+      private _router: Router,
+      private _dummyS: DummyDataService
     ) {
   }
 
   ngOnInit(): void {
-    this.GetAllAuthorList();
+     this.GetAllAuthorList();
   }
 
   GetAllAuthorList() {
-    this._commonS.GetAuthorList().subscribe(result => {
-      this._AuthorList = result;
-    });
+
+    this._dummyS.AuthorList().subscribe(
+      {
+        next: (row) => { this._AuthorList.push(row); }
+      }
+    );
+    // this._commonS.GetAuthorList().subscribe(result => {
+    //   this._AuthorList = result;
+    // });
   }
   SelectedAuthor(author: IAuthor) {
     this._Course.AuthorId = author.Id;
+    this._Course.Author.Id = author.Id;
+    this._Course.Author.Name = author.Name;
     this.SelectedMenu = author.Name;
   }
   AddCourse(event: any): void {
-    this._http.post<ICourse>(AppUtil.BASE_URL + AppUtil.CreateCourse_Api, this._Course)
+    this._dummyS.CreateCourse(this._Course)
       .subscribe(
         result => {
           this._router.navigate(['/common-data-lazy/list']);
         });
+
+    // this._http.post<ICourse>(AppUtil.BASE_URL + AppUtil.CreateCourse_Api, this._Course)
+    //   .subscribe(
+    //     result => {
+    //       this._router.navigate(['/common-data-lazy/list']);
+    //     });
   }
 
 

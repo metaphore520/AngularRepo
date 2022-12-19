@@ -1,7 +1,6 @@
 import { IAuthor } from "./IAuthor";
 
 export interface ICourse {
-
   Id: number;
   Name: string;
   Description: string; 

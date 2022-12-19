@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { DummyDataService } from '../../../../Service/dummy-data-service/dummy-data.service'
 import { AppUtil } from '../../../../appUtils/appConstant/AppUtility';
 import { ICourse } from '../../../../Domains/DbModel/ICourse';
 import { BaseService } from '../../../../Service/base-service/base.service';
@@ -22,28 +23,38 @@ export class ListComponent implements OnInit {
     { value: 'F Item 6', value2: "New Value 6" }
   ];
 
-  DDMenuClicked(menu : any): void {
+  DDMenuClicked(menu: any): void {
     console.log(menu);
   }
 
 
-  number: Array<number> = [1, 2, 3, 4,5];
+  number: Array<number> = [1, 2, 3, 4, 5];
   constructor(
     private _http: HttpClient,
     private _baseService: BaseService,
-    private _router: Router
+    private _router: Router,
+    private _dummyS: DummyDataService
   ) { }
 
   ngOnInit(): void {
     this.GetAllCourseList();
   }
   GetAllCourseList(): void {
-    this._http.get<ICourse[]>(AppUtil.BASE_URL + AppUtil.GetCourseList_Api).subscribe(result => {
-      console.log(result);
-      this._courseList = result;
-      console.log(result);
-    }, error => console.error(error));
+    this._courseList = [];
+    // this._http.get<ICourse[]>(AppUtil.BASE_URL + AppUtil.GetCourseList_Api).subscribe(result => {
+    //   console.log(result);
+    //   this._courseList = result;
+    //   console.log(result);
+    // }, error => console.error(error));
+    this._dummyS.CourseList().subscribe({
+      next: (row) => { this._courseList.push(row); }
+    });
+
+
   }
+
+
+
 
 
 
@@ -56,7 +67,9 @@ export class ListComponent implements OnInit {
 
 
   Delete(course: ICourse): void {
-    this._http.post<ICourse>(AppUtil.BASE_URL + AppUtil.DeleteCourse_Api, course)
+    //this._http.post<ICourse>(AppUtil.BASE_URL + AppUtil.DeleteCourse_Api, course)
+
+    this._dummyS.DeleteCourse(course)
       .subscribe(result => {
         /// this._router.navigate(['/common-data/list']);
         this.GetAllCourseList();

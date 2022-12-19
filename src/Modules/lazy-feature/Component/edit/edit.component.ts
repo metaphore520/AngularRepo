@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { delay, Subscription } from 'rxjs';
+import { DummyDataService } from  '../../../../Service/dummy-data-service/dummy-data.service';
+// 'src/Service/dummy-data-service/dummy-data.service';
 import { AppUtil } from '../../../../appUtils/appConstant/AppUtility';
 import { IAuthor } from '../../../../Domains/DbModel/IAuthor';
 import { ICourse } from '../../../../Domains/DbModel/ICourse';
@@ -34,16 +36,16 @@ export class EditComponent implements OnInit {
       private _baseS: BaseService,
       private _http: HttpClient,
       private _router: Router,
-      private _activatedRoute: ActivatedRoute
+      private _activatedRoute: ActivatedRoute,
+      private _dummyS: DummyDataService
     ) { }
 
   ngOnInit(): void {
     this.GetAllAuthorList();
     console.log('Data................................');
-    this._subscription = this._baseS.dataComm.subscribe(
+    this._subscription = this._baseS.dataComm.pipe(delay(6000)).subscribe(
       data => {
         this._Course = data as ICourse;
-
         this.SelectedAuthor(this._AuthorList.find(s => s.Id == this._Course.AuthorId) as IAuthor);
         //this.SelectedMenu = this._AuthorList.find(s => s.Id == this._Course.AuthorId)?.Name as string;
         //alert(this.SelectedMenu);
@@ -51,20 +53,28 @@ export class EditComponent implements OnInit {
     );
   }
   EditCourse(event: any): void {
-    this._http.post<ICourse>(AppUtil.BASE_URL + AppUtil.EditCourse_Api, this._Course)
+    this._dummyS.EditCourse(this._Course)
       .subscribe(result => {
         this._router.navigate(['/common-data-lazy/list']);
       });
+    // this._http.post<ICourse>(AppUtil.BASE_URL + AppUtil.EditCourse_Api, this._Course)
   }
 
   GetAllAuthorList() {
-    this._activatedRoute.data.subscribe(({ authorList }) => {
-      // do something with your resolved data ...
-      this._AuthorList = authorList;
-    })
+    // this._activatedRoute.data.subscribe(({ authorList }) => {
+    //   // do something with your resolved data ...
+    //   this._AuthorList = authorList;
+    // })
+      this._AuthorList = [];
+      this._dummyS.AuthorList()
+      .subscribe({
+        next: (row) => { this._AuthorList.push(row); }
+      }); 
   }
   SelectedAuthor(author: IAuthor) {
     this._Course.AuthorId = author.Id;
+    this._Course.Author.Id = author.Id;
+    this._Course.Author.Name = author.Name;
     this.SelectedMenu = author.Name;
   }
 

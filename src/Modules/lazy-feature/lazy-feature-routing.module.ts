@@ -26,9 +26,9 @@ const routes: Routes = [
       {
         path: "edit",
         component: EditComponent,
-        resolve: {
-          authorList: EditCourseResolver
-        }
+        // resolve: {
+        //   authorList: EditCourseResolver
+        // }
       }
     ]
   }

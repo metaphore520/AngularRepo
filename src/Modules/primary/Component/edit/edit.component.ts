@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { DummyDataService } from '../../../../Service/dummy-data-service/dummy-data.service';
 import { AppUtil } from '../../../../appUtils/appConstant/AppUtility';
 import { IAuthor } from '../../../../Domains/DbModel/IAuthor';
 import { BaseService } from '../../../../Service/base-service/base.service';
@@ -18,20 +19,21 @@ export class EditComponent implements OnInit {
   //@Input() param_Author  : Author = new Author('');
   temp_author: string = '';
 
-   _subscription: Subscription = new Subscription();
+  _subscription: Subscription = new Subscription();
 
   public _Author: IAuthor;
   constructor(public _baseService: BaseService,
     public _http: HttpClient,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _dummyS: DummyDataService
   ) {
 
     this._Author = {
       Id: -1,
-      Name : ''
+      Name: ''
     }
-    
+
     //  this._Author = this._route.snapshot.paramMap.get('p_author');
     //  this._Author = this._route.snapshot.
     //  this._Author = JSON.parse(this._route.snapshot.paramMap.get('id'));
@@ -59,11 +61,17 @@ export class EditComponent implements OnInit {
   }
 
   EditAuthor(event: any): void {
-    this._http.post<IAuthor>(AppUtil.BASE_URL + AppUtil.EditAuthor_Api, this._Author)
+
+    this._dummyS.EditAuthor(this._Author)
       .subscribe(result => {
 
         this._router.navigate(['/common-data/list']);
       });
+    // this._http.post<IAuthor>(AppUtil.BASE_URL + AppUtil.EditAuthor_Api, this._Author)
+    //   .subscribe(result => {
+
+    //     this._router.navigate(['/common-data/list']);
+    //   });
   }
 
 
