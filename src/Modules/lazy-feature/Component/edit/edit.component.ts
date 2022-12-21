@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { delay, Subscription } from 'rxjs';
+import { delay, Subscription,Observable, of  } from 'rxjs';
 import { DummyDataService } from  '../../../../Service/dummy-data-service/dummy-data.service';
-// 'src/Service/dummy-data-service/dummy-data.service';
+import { IDeactivateComponent } from '../../../../Contracts/ideactivate-component';
 import { AppUtil } from '../../../../appUtils/appConstant/AppUtility';
 import { IAuthor } from '../../../../Domains/DbModel/IAuthor';
 import { ICourse } from '../../../../Domains/DbModel/ICourse';
@@ -15,7 +15,7 @@ import { CommonService } from '../../../../Service/common-service/common.service
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit {
+export class EditComponent implements OnInit, IDeactivateComponent {
 
 
   SelectedMenu: string = "Select Author";
@@ -39,6 +39,9 @@ export class EditComponent implements OnInit {
       private _activatedRoute: ActivatedRoute,
       private _dummyS: DummyDataService
     ) { }
+  canDeactivateGuard(): Observable<boolean> {
+    return of(false);
+  }
 
   ngOnInit(): void {
     this.GetAllAuthorList();

@@ -6,10 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class BaseService {
-
-
   public dataComm = new BehaviorSubject({})
-
   constructor(
     private http: HttpClient
   ) {
@@ -18,7 +15,6 @@ export class BaseService {
   public sendData(myobj: any): void{
     this.dataComm.next(myobj);
   }
-
 
   //public get<T>(url: string): Observable<T> {
   //  return this.http.get<T>(url);

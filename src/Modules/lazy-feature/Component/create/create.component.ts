@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DummyDataService } from '../../../../Service/dummy-data-service/dummy-data.service';
+import { Observable, of } from 'rxjs';
+import { IDeactivateComponent } from '../../../../Contracts/ideactivate-component';
 import { AppUtil } from '../../../../appUtils/appConstant/AppUtility';
 import { IAuthor } from '../../../../Domains/DbModel/IAuthor';
 import { ICourse } from '../../../../Domains/DbModel/ICourse';
@@ -12,7 +14,7 @@ import { CommonService } from '../../../../Service/common-service/common.service
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, IDeactivateComponent {
 
   SelectedMenu: string = 'Select Author';
 
@@ -32,6 +34,9 @@ export class CreateComponent implements OnInit {
       private _router: Router,
       private _dummyS: DummyDataService
     ) {
+  }
+  canDeactivateGuard(): Observable<boolean> {
+    return of(false);
   }
 
   ngOnInit(): void {

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ActivateChildGuard } from 'src/RouteGuard/activate-child.guard';
+import { ActivateGuard } from 'src/RouteGuard/activate.guard';
+import { DactivateGuard } from 'src/RouteGuard/dactivate.guard';
 import { EditCourseResolver } from '../../Resolvers/edit-course.resolver';
 import { CreateComponent } from './Component/create/create.component';
 import { EditComponent } from './Component/edit/edit.component';
@@ -11,6 +14,7 @@ const routes: Routes = [
   {
     path: '',
     component: IndexComponent,
+    canActivate : [ActivateGuard],
     children: [
       {
         path: '',
@@ -26,14 +30,18 @@ const routes: Routes = [
       },
       {
         path: 'create',
-        component: CreateComponent
+        component: CreateComponent,
+        canActivateChild : [ActivateChildGuard],
+        canDeactivate : [DactivateGuard]
       },
       {
         path: "edit",
         component: EditComponent,
-        // resolve: {
-        //   authorList: EditCourseResolver
-        // }
+        resolve: {
+          authorList: EditCourseResolver
+        },
+        canActivateChild : [ActivateChildGuard],
+        canDeactivate : [DactivateGuard]
       }
     ]
   }

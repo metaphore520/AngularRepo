@@ -10,7 +10,6 @@ export class AuthorService {
   constructor(public _baseService: BaseService) {
 
   }
-
   //public createAuthor(_author: Author) {
   //  this._baseService.set<Author>(AppUtil.BASE_URL + AppUtil.CreateAuthor, _author);
   //}
@@ -21,10 +20,6 @@ export class AuthorService {
   //  this._baseService.get<Author>(AppUtil.BASE_URL + AppUtil.ListAuthor);
   //}
 
-
-
-
-
   //public createAuthor(_author: Author) : any {
   //  this._baseService.set(AppUtil.BASE_URL + AppUtil.CreateAuthor, _author);
   //}
@@ -34,13 +29,5 @@ export class AuthorService {
   //public listAuthor(): any {
   //  this._baseService.get(AppUtil.BASE_URL + AppUtil.ListAuthor);
   //}
-
-
-
-
-
-
-
-
 
 }
