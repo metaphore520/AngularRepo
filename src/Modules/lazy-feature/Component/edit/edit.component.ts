@@ -40,6 +40,7 @@ export class EditComponent implements OnInit, IDeactivateComponent {
       private _dummyS: DummyDataService
     ) { }
   canDeactivateGuard(): Observable<boolean> {
+    console.log('De Activate EditComponent  D');
     return of(false);
   }
 

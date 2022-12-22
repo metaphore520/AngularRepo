@@ -36,7 +36,8 @@ export class CreateComponent implements OnInit, IDeactivateComponent {
     ) {
   }
   canDeactivateGuard(): Observable<boolean> {
-    return of(false);
+    console.log('De Activate CreateComponent D');
+    return of(true);
   }
 
   ngOnInit(): void {

@@ -15,7 +15,7 @@ export class LoadModuleGuard implements CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-   //debugger;
+      console.log('Can Load Module Guard Access');
       return this._commonS.GetPermission();
   }
 }

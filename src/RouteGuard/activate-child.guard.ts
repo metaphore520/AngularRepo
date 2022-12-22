@@ -16,7 +16,8 @@ export class ActivateChildGuard implements CanActivateChild {
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return this._commonS.GetPermissionF();
+      console.log('Can Activate Child Guard Access');
+      return this._commonS.GetPermission();
   }
   
 }

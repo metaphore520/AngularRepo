@@ -1,28 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ActivateChildGuard } from 'src/RouteGuard/activate-child.guard';
-import { ActivateGuard } from 'src/RouteGuard/activate.guard';
-import { DactivateGuard } from 'src/RouteGuard/dactivate.guard';
+import { ActivateChildGuard } from '../../RouteGuard/activate-child.guard';
+import { ActivateGuard } from '../../RouteGuard/activate.guard';
+import { DactivateGuard } from '../../RouteGuard/dactivate.guard';
 import { EditCourseResolver } from '../../Resolvers/edit-course.resolver';
 import { CreateComponent } from './Component/create/create.component';
 import { EditComponent } from './Component/edit/edit.component';
 import { IndexComponent } from './Component/index/index.component';
 import { InterceptorComponent } from './Component/interceptor/interceptor.component';
 import { ListComponent } from './Component/list/list.component';
+import { PageNotFoundComponent } from 'src/Component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
     path: '',
     component: IndexComponent,
     canActivate : [ActivateGuard],
+    canActivateChild : [ActivateChildGuard],
     children: [
       {
         path: '',
-        component: ListComponent
+        component: ListComponent,
+        canActivate : [ActivateGuard],
       },
       {
         path: 'list',
-        component: ListComponent
+        component: ListComponent,
+        canActivate : [ActivateGuard],
       },
       {
         path: 'interceptor-test',
@@ -31,7 +35,6 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreateComponent,
-        canActivateChild : [ActivateChildGuard],
         canDeactivate : [DactivateGuard]
       },
       {
@@ -40,8 +43,11 @@ const routes: Routes = [
         resolve: {
           authorList: EditCourseResolver
         },
-        canActivateChild : [ActivateChildGuard],
         canDeactivate : [DactivateGuard]
+      },
+      {
+        path : '**',
+        component : PageNotFoundComponent
       }
     ]
   }

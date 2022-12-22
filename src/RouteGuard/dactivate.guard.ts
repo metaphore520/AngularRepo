@@ -11,7 +11,7 @@ import { CommonService } from '../Service/common-service/common.service';
   providedIn: 'root'
 })
 export class DactivateGuard implements CanDeactivate<IDeactivateComponent> {
-  // let dactivateC = inject(DeactivateComponent);
+  
   constructor(private _commonS: CommonService) {
   }
 
@@ -20,7 +20,7 @@ export class DactivateGuard implements CanDeactivate<IDeactivateComponent> {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return component.canDeactivateGuard();
+      return component.canDeactivateGuard();
   }
 
 }
