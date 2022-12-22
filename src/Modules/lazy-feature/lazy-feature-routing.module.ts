@@ -10,23 +10,24 @@ import { IndexComponent } from './Component/index/index.component';
 import { InterceptorComponent } from './Component/interceptor/interceptor.component';
 import { ListComponent } from './Component/list/list.component';
 import { PageNotFoundComponent } from 'src/Component/page-not-found/page-not-found.component';
+import { CustomPreloadingStrategy } from '../custom-preloading-strategy';
 
 const routes: Routes = [
   {
     path: '',
     component: IndexComponent,
-    canActivate : [ActivateGuard],
-    canActivateChild : [ActivateChildGuard],
+    canActivate: [ActivateGuard],
+    canActivateChild: [ActivateChildGuard],
     children: [
       {
         path: '',
         component: ListComponent,
-        canActivate : [ActivateGuard],
+        canActivate: [ActivateGuard]
       },
       {
         path: 'list',
         component: ListComponent,
-        canActivate : [ActivateGuard],
+        canActivate: [ActivateGuard],
       },
       {
         path: 'interceptor-test',
@@ -35,7 +36,7 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreateComponent,
-        canDeactivate : [DactivateGuard]
+        canDeactivate: [DactivateGuard]
       },
       {
         path: "edit",
@@ -43,11 +44,11 @@ const routes: Routes = [
         resolve: {
           authorList: EditCourseResolver
         },
-        canDeactivate : [DactivateGuard]
+        canDeactivate: [DactivateGuard]
       },
       {
-        path : '**',
-        component : PageNotFoundComponent
+        path: '**',
+        component: PageNotFoundComponent
       }
     ]
   }
